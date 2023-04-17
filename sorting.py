@@ -34,12 +34,25 @@ def selection_sort(list_of_numbers):
         list_of_numbers[i], list_of_numbers[min_idx] = list_of_numbers[min_idx], list_of_numbers[i]
     return list_of_numbers
 
+
+def bubble_sort(list_of_numbers):
+    n = len(list_of_numbers)
+    for i in range(n-1):
+        for idx in range(n - i - 1):
+            if list_of_numbers[idx + 1] < list_of_numbers[idx]:
+                list_of_numbers[idx + 1], list_of_numbers[idx] = list_of_numbers[idx], list_of_numbers[idx + 1]
+    return list_of_numbers
+
+
 def main():
     my_data = read_data("numbers.csv")
     print(my_data)
 
-    sorted = selection_sort(my_data["series_3"])
-    print(sorted)
+    sort_method = selection_sort()
+    # sort_method = bubble_sort()
+
+    sorted_select = sort_method(my_data["series_3"])
+    print(sorted_select)
 
 
 if __name__ == '__main__':
