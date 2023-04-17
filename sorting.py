@@ -43,13 +43,25 @@ def bubble_sort(list_of_numbers):
                 list_of_numbers[idx + 1], list_of_numbers[idx] = list_of_numbers[idx], list_of_numbers[idx + 1]
     return list_of_numbers
 
+def insertion_sort(list_of_numbers):
+    n = len(list_of_numbers)
+    for i in range(1, n):
+        key = list_of_numbers[i]
+        j = i - 1
+        while j >= 0 and key < list_of_numbers[j]:
+            list_of_numbers[j + 1] = list_of_numbers[j]
+            j = j - 1
+        list_of_numbers[j + 1] = key
+    return list_of_numbers
+
 
 def main():
     my_data = read_data("numbers.csv")
     print(my_data)
 
-    sort_method = selection_sort()
-    # sort_method = bubble_sort()
+    sort_method = selection_sort
+    # sort_method = bubble_sort
+    # sort_method = insertion_sort
 
     sorted_select = sort_method(my_data["series_3"])
     print(sorted_select)
